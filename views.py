@@ -1,8 +1,12 @@
 #################################### APLICAÇÃO FLASK ####################################
 
 from flask import Flask, render_template, request, redirect, session, flash, url_for, send_from_directory, jsonify
+from http import server
+from lib2to3.pgen2 import driver
+from re import S
 import hashlib
 import pyodbc
+import textwrap
 from datetime import date, datetime
 
 from metodos import metodo_login, metodo_criar_usuario, metodo_att_usuario, metodo_buscar_usuario,\
@@ -20,12 +24,32 @@ app.secret_key = 'alura'
 
 #################################### CONEXÃO SQL SERVER ####################################
 
-parametro=pyodbc.connect('Driver={SQL Server};'
-                      'Server=DESKTOP-62FFEQ2;'
-                      'Database=Comercial_Control;'
-                      'Trusted_Connection=yes;')
-    
+######## Specify the Driver ##############
+
+driver = '{ODBC Driver 17 for SQL Server}'
+
+
+######## Specify the Server Name and Database Name ##############
+
+server_name = 'thiagoms-rm'
+database = 'SQLBI'
+
+####### CREATE OUR SERVER URl ##############
+server = '{server_name}.database.windows.net'.format(server_name=server_name)
+
+# Define Username & Password
+
+username = 'jeffsing'
+password = '85!@Hty9256'
+Encrypt = 'yes'
+TrustServerCertificate='no'
+Authentication = 'ActiveDirectoryIntegrated'
+
+parametro = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 db = parametro.cursor()
+
+#################################### FIM CONECÇÃO PYODBC ####################################
+
 cadastrar_usu = metodo_criar_usuario.cadastrar_usuario(db)
 atualiza_usuario = metodo_att_usuario.atualiza_usuario(db)
 buscar_id_usuario = metodo_buscar_usuario.busca_usuario(db)
