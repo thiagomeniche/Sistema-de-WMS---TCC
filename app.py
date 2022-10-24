@@ -1,5 +1,6 @@
 #################################### APLICAÇÃO FLASK ####################################
 
+import os
 from flask import Flask, render_template, request, redirect, session, flash, url_for, send_from_directory, jsonify
 from http import server
 from lib2to3.pgen2 import driver
@@ -19,6 +20,8 @@ from models import Usuario,Pessoa,Endereco_Pessoa,ContatoPessoa, exibe_usuario, 
 
 app = Flask(__name__)
 app.secret_key = 'alura'
+port = int(os.environ.get('PORT', 5000))
+
 
 #################################### ^^^^^^^^^^^^^^^^^^ ####################################
 
