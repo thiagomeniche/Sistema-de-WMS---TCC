@@ -3,7 +3,7 @@ azure-functions
 azure-functions-worker
 grpcio==1.50.0
 grpcio-tools==1.50.0
-protobuf==3.6.1
+protobuf==4.21.6
 six==1.11.0
 # Additional packages
 Flask==2.2.2

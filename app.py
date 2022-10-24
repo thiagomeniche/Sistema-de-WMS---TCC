@@ -197,7 +197,7 @@ def cadastrar_usuario():
     id_tipopessoa = request.form['radio']
     nome_usuario = request.form['nome_usuario']
     email_usuario = request.form['login_usuario']
-    dt_cadastro = data_atual.strftime('%d/%m/%y')
+    dt_cadastro = data_atual
     dt_bloqueio = None
     motivo_bloqueio = None
     dt_ultimo_acesso = None
@@ -212,7 +212,7 @@ def cadastrar_usuario():
     id_tipo_pessoa = request.form['radio']
     nome = request.form['nome_usuario']
     inscricao = 3
-    data_cadastro = data_atual.strftime('%d/%m/%y')
+    data_cadastro = data_atual
     ind_cliente = None
     ind_funcionario = None
     ind_fornecedor = None
@@ -259,7 +259,7 @@ def cadastrar_fornecedor():
     id_tipo_pessoa = '3'
     nome = request.form['razaosocial']
     inscricao = request.form['cnpj']
-    data_cadastro = data_atual.strftime('%d/%m/%y')
+    data_cadastro = data_atual
     ind_fornecedor = None
     ind_cliente = None
     ind_funcionario = None
