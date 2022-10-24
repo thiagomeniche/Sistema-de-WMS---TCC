@@ -20,7 +20,6 @@ from models import Usuario,Pessoa,Endereco_Pessoa,ContatoPessoa, exibe_usuario, 
 
 app = Flask(__name__)
 app.secret_key = 'alura'
-port = int(os.environ.get('PORT', 5000))
 
 
 #################################### ^^^^^^^^^^^^^^^^^^ ####################################
@@ -83,6 +82,8 @@ listar_produtos_caixa = metodo_listar_produtos_caixa.listar_produtos_caixa(db)
 
 @app.route('/')
 def login():
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
     proxima = request.args.get('proxima')
     return render_template('login.html', proxima=proxima)
 
